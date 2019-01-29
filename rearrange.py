@@ -1,6 +1,7 @@
 import sys
 import random
 
+# 1. Let's Get Started
 
 # making swaps within the same array
 def rearranging():

@@ -1,4 +1,7 @@
-# reverse strings
+
+
+# 1. Let's Get Started
+# Stretch Challenges: Reverse words, Reverse sentences
 
 def reverse_word(word):
     # return "".join(reversed(word))

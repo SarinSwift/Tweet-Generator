@@ -21,9 +21,17 @@ def unique_words(histogram):
 
     return unique_count
 
+def frequency(word, histogram):
+    print(histogram)
+    freq = 0
 
+    for pair in histogram:
+        print(pair)
+
+    return freq
 
 
 if __name__ == '__main__':
     print(histogram())
     print(unique_words(histogram()))
+    print(frequency('fish', histogram()))

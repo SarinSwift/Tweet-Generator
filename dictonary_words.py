@@ -19,7 +19,7 @@ def get_random_word(file):
 
 
 def random_sentence_from_dict(file):
-    sentence_string = ""
+    array_string = []
     array_of_number = sys.argv[1]
 
     with open(file, 'r') as f:
@@ -29,9 +29,11 @@ def random_sentence_from_dict(file):
         lines = content_of_file.split()
         line_number = random.randrange(0, len(lines))
 
-        sentence_string += (lines[line_number] + " ")
+        array_string.append(lines[line_number])
 
-    return sentence_string
+    answer_string = " ".join(array_string) + "."
+
+    return answer_string.capitalize()
 
 
 if __name__ == '__main__':

@@ -1,4 +1,7 @@
 
+# 3. Analyze Word Frequency In Text
+
+
 def histogram():
     sentence = "one fish two fish red fish blue fish"
     array = sentence.split()
@@ -11,6 +14,38 @@ def histogram():
             dict[word] += 1
 
     return dict
+
+def histogram_list0flist():
+
+    sentence = "one fish two fish red fish blue fish"
+    array = sentence.split()
+    histogram = []
+
+    # loop through indexes in the array
+    for i in range(len(array)):
+        word_found = False
+        # if there's something in the histogram:
+        if histogram:
+            # looping through the histogram's indexes
+            for j in range(len(histogram)):
+                # if the word word in histogram == word in array:
+                if histogram[j][0] == array[i]:
+                    # add the count by 1
+                    histogram[j][1] += 1
+                    word_found = True
+                    break
+
+            # There's no words in the histogram, so we add the word with the count of 1
+            if not word_found:
+                histogram.append([array[i], 1])
+
+        # nothing is in the histogram
+        else:
+            histogram.append([array[i], 1])
+
+    return histogram
+
+
 
 def unique_words(histogram):
     unique_count = 0
@@ -32,6 +67,8 @@ def frequency(word, histogram):
 
 
 if __name__ == '__main__':
-    print(histogram())
-    print(unique_words(histogram()))
-    print(frequency('fish', histogram()))
+    # print(histogram())
+    # print(unique_words(histogram()))
+    # print(frequency('fish', histogram()))
+
+    print(histogram_list0flist())

@@ -46,6 +46,19 @@ def histogram_list0flist():
     return histogram
 
 
+def histogram_listOfTuples():
+    sentence = "one fish two fish red fish blue fish"
+    array = sentence.split()
+    histogram = []
+
+    for i in range(len(array)):
+        if histogram:
+            for j in range(len(histogram)):
+
+
+
+
+
 
 def unique_words(histogram):
     unique_count = 0
@@ -71,4 +84,5 @@ if __name__ == '__main__':
     # print(unique_words(histogram()))
     # print(frequency('fish', histogram()))
 
-    print(histogram_list0flist())
+    # print(histogram_list0flist())
+    print(histogram_listOfTuples())

@@ -3,23 +3,27 @@
 
 
 def histogram():
-    sentence = "one fish two fish red fish blue fish"
-    array = sentence.split()
-    dict = {}
+    histogram = {}
+
+    with open('/Users/sarinswift/Desktop/Designs/words_sample.txt', 'r') as f:
+        content_of_file = f.read()
+    array = content_of_file.split()
 
     for word in array:
-        if dict.get(word) == None:
-            dict[word] = 1
+        if histogram.get(word) == None:
+            histogram[word] = 1
         else:
-            dict[word] += 1
+            histogram[word] += 1
 
-    return dict
+    return histogram
+
 
 def histogram_list0flist():
-
-    sentence = "one fish two fish red fish blue fish"
-    array = sentence.split()
     histogram = []
+
+    with open('/Users/sarinswift/Desktop/Designs/words_sample.txt', 'r') as f:
+        content_of_file = f.read()
+    array = content_of_file.split()
 
     # loop through indexes in the array
     for i in range(len(array)):
@@ -47,16 +51,15 @@ def histogram_list0flist():
 
 
 def histogram_listOfTuples():
-    sentence = "one fish two fish red fish blue fish"
-    array = sentence.split()
-    histogram = []
+    # using the dictionary to add the items in the tuple
+    dictionary = histogram()
+    listTuples = []
 
-    for i in range(len(array)):
-        if histogram:
-            for j in range(len(histogram)):
+    for key in dictionary:
+        # print(key, dictionary[key])
+        listTuples.append((key, dictionary[key]))
 
-
-
+    return listTuples
 
 
 
@@ -68,6 +71,7 @@ def unique_words(histogram):
             unique_count += 1
 
     return unique_count
+
 
 def frequency(word, histogram):
     print(histogram)

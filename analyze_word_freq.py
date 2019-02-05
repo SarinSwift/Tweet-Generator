@@ -50,7 +50,7 @@ def histogram_list0flist():
 
     return histogram
 
-# Got from githubbbbb: not working yet
+
 def histogram_listList():
     histogram = []
 
@@ -62,7 +62,6 @@ def histogram_listList():
         for arr in histogram:
             if arr[0] == word:
                 arr[1] += 1
-                return
         histogram.append([word, 1])
 
     return histogram
@@ -104,9 +103,6 @@ def histogram_listTuples():
 
 
 
-
-
-
 def unique_words(histogram):
     unique_count = 0
 
@@ -129,10 +125,11 @@ def frequency(word, histogram):
 
 if __name__ == '__main__':
     # print(histogram())
+    # print(histogram_list0flist())
+    # print(histogram_listList())
+
+    # print(histogram_listOfTuples())
+    # print(histogram_listTuples())
+
     # print(unique_words(histogram()))
     # print(frequency('fish', histogram()))
-
-    # print(histogram_list0flist())
-    # print(histogram_listOfTuples())
-    # print(histogram_listList())
-    print(histogram_listTuples())

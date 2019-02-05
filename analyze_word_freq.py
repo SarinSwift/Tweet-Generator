@@ -10,6 +10,7 @@ def histogram():
     array = content_of_file.split()
 
     for word in array:
+        # if word not in histogram
         if histogram.get(word) == None:
             histogram[word] = 1
         else:
@@ -49,6 +50,23 @@ def histogram_list0flist():
 
     return histogram
 
+# Got from githubbbbb: not working yet
+def histogram_listList():
+    histogram = []
+
+    with open('/Users/sarinswift/Desktop/Designs/words_sample.txt', 'r') as f:
+        content_of_file = f.read()
+    array = content_of_file.split()
+
+    for word in array:
+        for arr in histogram:
+            if arr[0] == word:
+                arr[1] += 1
+                return
+        histogram.append([word, 1])
+
+    return histogram
+
 
 def histogram_listOfTuples():
     # using the dictionary to add the items in the tuple
@@ -60,6 +78,32 @@ def histogram_listOfTuples():
         listTuples.append((key, dictionary[key]))
 
     return listTuples
+
+# not using dictionary!!!
+def histogram_listTuples():
+    histogram = []
+
+    with open('/Users/sarinswift/Desktop/Designs/words_sample.txt', 'r') as f:
+        content_of_file = f.read()
+    array = content_of_file.split()
+
+    for word in array:
+        found = False
+        for inner in histogram:
+            if word == inner[0]:
+                count = inner[1] + 1
+                # since it's immutable, we have to remove from histogram and then append a new one
+                histogram.remove(inner)
+                histogram.append((word, count))
+                break
+        if not found:
+            histogram.append((word, 1))
+
+    return histogram
+
+
+
+
 
 
 
@@ -89,4 +133,6 @@ if __name__ == '__main__':
     # print(frequency('fish', histogram()))
 
     # print(histogram_list0flist())
-    print(histogram_listOfTuples())
+    # print(histogram_listOfTuples())
+    # print(histogram_listList())
+    print(histogram_listTuples())

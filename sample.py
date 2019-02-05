@@ -24,6 +24,22 @@ def sample():
 
     return
 
+# sample.py function we covered in class
+def sample_in_class():
+    sentence = "one fish two fish red fish blue fish"
+    sentence_array = sentence.split()
+    dict = histogram(sentence_array)
+
+    total_count = len(sentence_array)
+    cumulative_probability = 0
+
+    randomized = random.random()
+    for key in dict:
+        cumulative_probability += dict[key] / total_count
+        if cumulative_probability > randomized:
+            return key
+
+
 def histogram(array):
     histogram = {}
 
@@ -47,5 +63,6 @@ def test_probability():
 
 
 if __name__ == '__main__':
-    print(sample())
-    print(test_probability())
+    # print(sample())
+    print(sample_in_class())
+    # print(test_probability())

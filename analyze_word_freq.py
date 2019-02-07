@@ -1,13 +1,16 @@
 
 # 3. Analyze Word Frequency In Text
 
+def open_file():
+    with open('/Users/sarinswift/Desktop/Designs/words_sample.txt', 'r') as f:
+        content_of_file = f.read()
+    array = content_of_file.split()
+    return array
 
 def histogram():
     histogram = {}
 
-    with open('/Users/sarinswift/Desktop/Designs/words_sample.txt', 'r') as f:
-        content_of_file = f.read()
-    array = content_of_file.split()
+    array = open_file()
 
     for word in array:
         # if word not in histogram
@@ -22,9 +25,7 @@ def histogram():
 def histogram_list0flist():
     histogram = []
 
-    with open('/Users/sarinswift/Desktop/Designs/words_sample.txt', 'r') as f:
-        content_of_file = f.read()
-    array = content_of_file.split()
+    array = open_file()
 
     # loop through indexes in the array
     for i in range(len(array)):
@@ -54,9 +55,7 @@ def histogram_list0flist():
 def histogram_listList():
     histogram = []
 
-    with open('/Users/sarinswift/Desktop/Designs/words_sample.txt', 'r') as f:
-        content_of_file = f.read()
-    array = content_of_file.split()
+    array = open_file()
 
     for word in array:
         for arr in histogram:
@@ -82,9 +81,7 @@ def histogram_listOfTuples():
 def histogram_listTuples():
     histogram = []
 
-    with open('/Users/sarinswift/Desktop/Designs/words_sample.txt', 'r') as f:
-        content_of_file = f.read()
-    array = content_of_file.split()
+    array = open_file()
 
     for word in array:
         found = False
@@ -114,17 +111,11 @@ def unique_words(histogram):
 
 
 def frequency(word, histogram):
-    print(histogram)
-    freq = 0
-
-    for pair in histogram:
-        print(pair)
-
-    return freq
+    return histogram[word]
 
 
 if __name__ == '__main__':
-    # print(histogram())
+    print(histogram())
     # print(histogram_list0flist())
     # print(histogram_listList())
 
@@ -132,4 +123,4 @@ if __name__ == '__main__':
     # print(histogram_listTuples())
 
     # print(unique_words(histogram()))
-    # print(frequency('fish', histogram()))
+    # print(frequency('Sarin', histogram()))

@@ -22,7 +22,7 @@ def histogram():
     return histogram
 
 
-def histogram_list0flist():
+def histogram_list_of_list():
     histogram = []
 
     array = open_file()
@@ -52,7 +52,7 @@ def histogram_list0flist():
     return histogram
 
 
-def histogram_listList():
+def histogram_list_list():
     histogram = []
 
     array = open_file()
@@ -66,7 +66,7 @@ def histogram_listList():
     return histogram
 
 
-def histogram_listOfTuples():
+def histogram_list_of_tuples():
     # using the dictionary to add the items in the tuple
     dictionary = histogram()
     listTuples = []
@@ -78,7 +78,7 @@ def histogram_listOfTuples():
     return listTuples
 
 # not using dictionary!!!
-def histogram_listTuples():
+def histogram_list_tuples():
     histogram = []
 
     array = open_file()
@@ -116,11 +116,11 @@ def frequency(word, histogram):
 
 if __name__ == '__main__':
     print(histogram())
-    # print(histogram_list0flist())
-    # print(histogram_listList())
+    # print(histogram_list_of_list())
+    # print(histogram_list_list())
 
-    # print(histogram_listOfTuples())
-    # print(histogram_listTuples())
+    # print(histogram_list_of_tuples())
+    # print(histogram_list_tuples())
 
     # print(unique_words(histogram()))
     # print(frequency('Sarin', histogram()))

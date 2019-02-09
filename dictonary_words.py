@@ -46,5 +46,5 @@ def random_sentence_from_dict(file):
 
 
 if __name__ == '__main__':
-    # print(get_random_word('/Users/sarinswift/Desktop/Designs/words_sample.txt'))
-    print(random_sentence_from_dict('/usr/share/dict/words'))
+    print(get_random_word('/Users/sarinswift/Desktop/Designs/words_sample.txt'))
+    # print(random_sentence_from_dict('/usr/share/dict/words'))

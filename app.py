@@ -5,5 +5,5 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    findingHist = ana.histogram()
-    return str(findingHist)
+    # findingHist = ana.histogram()
+    return "hello world"

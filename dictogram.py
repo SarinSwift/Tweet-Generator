@@ -20,18 +20,17 @@ class Dictogram(dict):
         """Increase frequency count of given word by given count amount."""
         if word not in self:
             self.types += 1
-            self.tokens += 1
-            self[word] = 1
+            self.tokens += count
+            self[word] = count
         else:
-            self[word] += 1
-            self.tokens += 1
+            self[word] += count
+            self.tokens += count
 
     def frequency(self, word):
         """Return frequency count of given word, or 0 if word is not found."""
-        if word not in self:
-            return 0
-        else:
+        if word in self:
             return self[word]
+        return 0
 
 
 def print_histogram(word_list):

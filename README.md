@@ -19,7 +19,8 @@ Locate the prev node of the node which is to be deleted
 Point the next pointer of the prev to the next node of the node to be deleted
 
 ***Length of linkedlist:*** *Calculates the length of a linked list.*  
-Increment a count each time we loop through the linkedlist while the head is not none
+Has a stored property (return self.length_item) where we increment each time we create a node, and decrement each time we delete a node!   
+Runtime: O(1)  
 
 ***Find quality:*** *Find an item using a matching function.*  
 Loop through the linkedlist and checks if an item satisfies a given quality

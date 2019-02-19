@@ -1,3 +1,30 @@
+## Personal Notes  
+
+
+**[Linked Lists](https://github.com/SarinSwift/Tweet-Generator/blob/master/linkedlist.py)** 
+ *Feb.18*   
+A linked list is formed by linking nodes together. These nodes contain 'data' and 'next'. 
+
+***Append item:*** *Inserting a node at the end of a linked list.*  
+Changing the pointer of the current last node of the linkedlist to the new node  
+Reassign the tail pointer to the new node   
+
+***Prepend item:*** *Inserting a node at the beginning of a linked list.*  
+Setting the new node's next to the current head of the linkedlist  
+Reassign the head pointer to the new node
+
+***Delete item:*** *Deleting a node from a linked list.*  
+Loop through the linked list until we find the node we want to delete  
+Locate the prev node of the node which is to be deleted  
+Point the next pointer of the prev to the next node of the node to be deleted
+
+***Length of linkedlist:*** *Calculates the length of a linked list.*  
+Increment a count each time we loop through the linkedlist while the head is not none
+
+***Find quality:*** *Find an item using a matching function.*  
+Loop through the linkedlist and checks if an item satisfies a given quality
+
+
 # Tweet-Generator: Text Processing & Probability
 
 ## Course Schedule

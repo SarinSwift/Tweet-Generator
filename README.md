@@ -1,7 +1,7 @@
-## Personal Notes  
+# Personal Notes  
 
 
-**[Linked Lists](https://github.com/SarinSwift/Tweet-Generator/blob/master/linkedlist.py)** 
+## [Linked Lists](https://github.com/SarinSwift/Tweet-Generator/blob/master/linkedlist.py)
  *Feb.18*   
 A linked list is formed by linking nodes together. These nodes contain 'data' and 'next'. 
 
@@ -28,6 +28,28 @@ Runtime: O(1)
 ***Find quality:*** *Find an item using a matching function.*  
 Loop through the linkedlist and checks if an item satisfies a given quality  
 Runtime: O(n) where n is the number of elements because we'll have to find the element first.
+
+## [Dictogram](https://github.com/SarinSwift/Tweet-Generator/blob/master/dictogram.py)
+*Feb.18*  
+***Dictogram*** is a histogram implemented as a subclass of the dict type.  
+**types:** Count of distinct words  
+**tokens:** Total count of all occurences of words
+  
+word list: ['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish']  
+dictogram: {'one': 1, 'fish': 4, 'two': 1, 'red': 1, 'blue': 1}  
+8 tokens, 5 types  
+'blue' occurs 1 times  
+'fish' occurs 4 times  
+
+## [Listogram](https://github.com/SarinSwift/Tweet-Generator/blob/master/listogram.py) 
+*Feb.18*   
+***Listogram*** is a histogram implemented as a subclass of the list type.  
+  
+word list: ['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish']  
+listogram: [['one', 1], ['fish', 4], ['two', 1], ['red', 1], ['blue', 1]]  
+8 tokens, 5 types  
+'blue' occurs 1 times  
+'fish' occurs 4 times  
 
 
 # Tweet-Generator: Text Processing & Probability

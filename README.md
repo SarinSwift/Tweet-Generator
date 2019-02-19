@@ -7,23 +7,27 @@ A linked list is formed by linking nodes together. These nodes contain 'data' an
 
 ***Append item:*** *Inserting a node at the end of a linked list.*  
 Changing the pointer of the current last node of the linkedlist to the new node  
-Reassign the tail pointer to the new node   
+Reassign the tail pointer to the new node  
+Runtime: O(1) 
 
 ***Prepend item:*** *Inserting a node at the beginning of a linked list.*  
 Setting the new node's next to the current head of the linkedlist  
-Reassign the head pointer to the new node
+Reassign the head pointer to the new node  
+Runtime: O(1) 
 
 ***Delete item:*** *Deleting a node from a linked list.*  
 Loop through the linked list until we find the node we want to delete  
 Locate the prev node of the node which is to be deleted  
-Point the next pointer of the prev to the next node of the node to be deleted
+Point the next pointer of the prev to the next node of the node to be deleted  
+Runtime: O(n) where n is the number of elements because we'll have to find the element first.
 
 ***Length of linkedlist:*** *Calculates the length of a linked list.*  
 Has a stored property (return self.length_item) where we increment each time we create a node, and decrement each time we delete a node!   
 Runtime: O(1)  
 
 ***Find quality:*** *Find an item using a matching function.*  
-Loop through the linkedlist and checks if an item satisfies a given quality
+Loop through the linkedlist and checks if an item satisfies a given quality  
+Runtime: O(n) where n is the number of elements because we'll have to find the element first.
 
 
 # Tweet-Generator: Text Processing & Probability

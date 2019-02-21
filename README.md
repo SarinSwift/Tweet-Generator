@@ -43,12 +43,31 @@ Call the find method on the bucket to retreive the entry(Tuple of key and value)
 If we've found the item, replace the old entry with the new entry(Tuple of key and value)  
 else, just append the new entry  
 
-***Get(key):*** *Return the value associated with the given key, or raise KeyError*  
+***Get(key):*** *Return the value associated with the given key*  
 Get the key's hash code and calculate the index  
 Use the index to get a bucket  
 Call the find method on the bucket to retreive the entry  
 If there is a value, return the entry's key  
 else, raise KeyError  
+
+***Delete(key):*** *Delete the given key from this hash table*  
+Check if the key-value entry exists in the bucket  
+If found, delete from the specific bucket associated with the given key  
+else, raise KeyError
+
+***Contains(key):*** *Return True if this hash table contains the given key*  
+Go to the specific bucket  
+Call the find method on the specific bucket and return True if there's a value
+
+***Get a list of all keys:***  
+Loop through the linkedlists in the array of buckets  
+Loop through the bucket.items() to append the keys to an empty list  
+return the list of all keys in the hash table
+
+***Get a list of all values:***  
+Loop through the linkedlists in the array of buckets  
+Loop through the bucket.items() to append the values to an empty list  
+return the list of all values in the hash table 
 
 
 ## [Dictogram](https://github.com/SarinSwift/Tweet-Generator/blob/master/dictogram.py)

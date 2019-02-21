@@ -57,7 +57,12 @@ else, raise KeyError
 
 ***Contains(key):*** *Return True if this hash table contains the given key*  
 Go to the specific bucket  
-Call the find method on the specific bucket and return True if there's a value
+Call the find method on the specific bucket and return True if there's a value  
+
+***Find length:*** *Return the number of key-value entries by traversing its buckets*  
+Loop through all buckets  
+call the length method on each specific bucket, and increment the count    
+return the length
 
 ***Get a list of all keys:***  
 Loop through the linkedlists in the array of buckets  
@@ -68,6 +73,11 @@ return the list of all keys in the hash table
 Loop through the linkedlists in the array of buckets  
 Loop through the bucket.items() to append the values to an empty list  
 return the list of all values in the hash table 
+
+***Get a list of all entries(key-value pairs):***  
+Loop through the linkedlists in the array of buckets  
+extend to the empty list with bucket.items()  
+return the pairs of key-value entries in each bucket
 
 
 ## [Dictogram](https://github.com/SarinSwift/Tweet-Generator/blob/master/dictogram.py)

@@ -29,6 +29,28 @@ Runtime: O(1)
 Loop through the linkedlist and checks if an item satisfies a given quality  
 Runtime: O(n) where n is the number of elements because we'll have to find the element first.
 
+## [Hash Tables](https://github.com/SarinSwift/Tweet-Generator/blob/master/hashtable.py)
+*Feb.20*  
+A data structure that powers Python's dictionary feature. Dictionaries allow you to map keys to values.  
+```
+index = hashNumber % numberOfBuckets   
+```
+
+***Set(key and value):*** *Insert or update the given key with its associated value*  
+Get the key's hash value, and calculate the index using the modulus operator  
+Use the index to get the bucket where the entry should be stored  
+Call the find method on the bucket to retreive the entry(Tuple of key and value)  
+If we've found the item, replace the old entry with the new entry(Tuple of key and value)  
+else, just append the new entry  
+
+***Get(key):*** *Return the value associated with the given key, or raise KeyError*  
+Get the key's hash code and calculate the index  
+Use the index to get a bucket  
+Call the find method on the bucket to retreive the entry  
+If there is a value, return the entry's key  
+else, raise KeyError  
+
+
 ## [Dictogram](https://github.com/SarinSwift/Tweet-Generator/blob/master/dictogram.py)
 *Feb.18*  
 ***Dictogram*** is a histogram implemented as a subclass of the dict type.  

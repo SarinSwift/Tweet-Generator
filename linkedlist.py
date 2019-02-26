@@ -104,6 +104,10 @@ class LinkedList(object):
             self.length_item += 1
 
     def replace(self, old, new):
+        """replace an old item with a new item 
+        Best case running time: O(1) if item in linked list is empty or near the head of ll
+        Worst case running time: O(n) if item is near the tail of the ll or not present at all.
+        """
         head = self.head
         while head is not None:
             if head.data == old:

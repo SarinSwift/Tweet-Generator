@@ -48,7 +48,10 @@ class LinkedList(object):
         return items  # O(1) time to return list
 
     def is_empty(self):
-        """Return a boolean indicating whether this linked list is empty."""
+        """Return a boolean indicating whether this linked list is empty.
+        O(1): oinly checking the head variable
+        """
+
         return self.head is None
 
     def length(self):
@@ -65,13 +68,14 @@ class LinkedList(object):
         #     count += 1
         #     head = head.next
         # return count
-        
+
         return self.length_item
 
     def append(self, item):
         """Insert the given item at the tail of this linked list.
-        Running time: O(1)
+        Best and Worst case run time: O(1)
         O(1) because we only check for 1 value which is at the tail
+        *Can be O(n) if we loop through the whole loop and change the last node!!*
         """
         new_node = Node(item)
         if self.tail is not None:
@@ -85,7 +89,7 @@ class LinkedList(object):
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list.
-        Running time: O(1)
+        Best and Worst case run time: O(1)
         O(1) because we're just changing the first node in the linked list and not iterating through nodes
         """
         new_node = Node(item)
@@ -112,8 +116,9 @@ class LinkedList(object):
 
     def find(self, quality):
         """Return an item from this linked list satisfying the given quality.
-        TODO: Best case running time: O(???) Why and under what conditions?
-        TODO: Worst case running time: O(???) Why and under what conditions?"""
+        Best case running time: O(1) if item in linked list is empty or near the head of ll
+        Worst case running time: O(n) if item is near the tail of the ll or not present at all.
+        """
         head = self.head
         # print("outside")
         # print(head.next) # 'B'
@@ -131,8 +136,9 @@ class LinkedList(object):
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
-        TODO: Best case running time: O(???) Why and under what conditions?
-        TODO: Worst case running time: O(???) Why and under what conditions?"""
+        Best case running time: O(1) if item in linked list is empty or near the head of ll
+        Worst case running time: O(n) if item is near the tail of the ll or not present at all.
+        """
         node_to_delete = Node(item)
         current = self.head
         previous = None

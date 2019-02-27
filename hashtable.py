@@ -135,6 +135,18 @@ def test_hash_table():
         ht.set(key, value)
         print('hash table: {}'.format(ht))
 
+    print('\nTesting values method:')
+    print(ht.values())
+
+    print('\nTesting keys method:')
+    print(ht.keys())
+
+    print('\nTesting length method:')
+    print(ht.length())
+
+    print('\nTesting contains method:')
+    print(ht.contains('X'))
+
     print('\nTesting get:')
     for key in ['I', 'V', 'X']:
         value = ht.get(key)

@@ -104,7 +104,7 @@ class LinkedList(object):
             self.length_item += 1
 
     def replace(self, old, new):
-        """replace an old item with a new item 
+        """replace an old item with a new item
         Best case running time: O(1) if item in linked list is empty or near the head of ll
         Worst case running time: O(n) if item is near the tail of the ll or not present at all.
         """
@@ -181,7 +181,16 @@ def test_linked_list():
     print('tail: {}'.format(ll.tail))
     print('length: {}'.format(ll.length()))
 
-    # Enable this after implementing delete method
+    # prepend method
+    ll_prepend = LinkedList()
+    print('ll_prepend: {}'.format(ll_prepend))
+    print("\nTesting prepend:")
+    for item in ['A', 'B', 'C']:
+        print('prepend({!r})'.format(item))
+        ll_prepend.prepend(item)
+        print('ll_prepend: {}'.format(ll_prepend))
+
+    # delete method
     delete_implemented = True
     if delete_implemented:
         print('\nTesting delete:')

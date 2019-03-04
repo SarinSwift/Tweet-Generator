@@ -1,4 +1,5 @@
 
+import re
 import string
 import random
 from dictogram import Dictogram
@@ -9,7 +10,7 @@ def open_file(file):
     '''
     with open(file, 'r') as f:
         content_of_file = f.read()
-        content_of_file = content_of_file.replace(".", "").replace(",", "").replace("*", "").replace(string.punctuation, "").replace("?", "").replace("!", "").replace(";", "").replace(":", "")
+        content_of_file = content_of_file.replace(".", "").replace(",", "").replace("*", "").replace(string.punctuation, "").replace("?", "").replace("!", "").replace(";", "").replace(":", "").replace('“', "").replace('”', "").replace('-', "")
 
     array = content_of_file.split()
     return array
@@ -23,7 +24,7 @@ def markov_chain(file):
     histogram = {}
 
     # create this >>> {'one': {}, 'fish': {}, 'two': {}, 'red': {}, 'blue': {}}
-    for word in file:
+    for word in file:   # is a single string of the word
         if word not in histogram:
             histogram[word] = {}
 
@@ -48,14 +49,16 @@ def generate_start_word(chain):
     TODO: Make more accurate by selecting words from a text file that is the *start* words in different sentences
     '''
     worddd = random.choice(list(chain.keys()))      # python3: need to change this to a list to use indexing on it
+
     return worddd
 
 
-def generate_sentence(length, chain):
+def generate_sentence(chain):
     '''
     Generates a random sentence from the main markov chain model
     Generates a sentence with the input length of words
     '''
+    length = 10
     starting_word = generate_start_word(chain)
     sentence = [starting_word]
 
@@ -63,7 +66,9 @@ def generate_sentence(length, chain):
         dict_of_following = chain[starting_word]
         sentence.append(generate_start_word(chain[sentence[i]]))
 
-    return " ".join(sentence)
+
+    my_string = " ".join(sentence)
+    return my_string
 
 
 def pick_rand_word(dict):
@@ -105,9 +110,8 @@ def pick_rand_word(dict):
 
 
 if __name__ == '__main__':
-    model = markov_chain(open_file('/Users/sarinswift/Desktop/Designs/words_sample.txt'))
-    longer_model = markov_chain(open_file('/Users/sarinswift/Documents/CS1.2/WarAndPeace.txt'))
-    print(generate_sentence(10, longer_model))
+    # model = markov_chain(open_file('/Users/sarinswift/Desktop/Designs/words_sample.txt'))
+    longer_model = markov_chain(open_file('WarAndPeace.txt'))
 
-
-    # print(markov_chain_second("one fish two fish red fish blue fish"))
+    # print(generate_sentence(10, longer_model))
+    print(generate_sentence(longer_model))

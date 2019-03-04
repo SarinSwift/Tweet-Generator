@@ -10,4 +10,4 @@ app.longer_model = markov_chain.markov_chain(markov_chain.open_file('WarAndPeace
 
 @app.route('/')
 def hello_world():
-    return markov_chain.generate_sentence(10, app.longer_model)
+    return markov_chain.generate_sentence(app.longer_model)

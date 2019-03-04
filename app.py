@@ -5,9 +5,9 @@ import markov_chain
 
 app = Flask(__name__)
 
+
+app.longer_model = markov_chain.markov_chain(markov_chain.open_file('WarAndPeace.txt'))
+
 @app.route('/')
 def hello_world():
-    # findingHist = ana.histogram()
-    longer_model = markov_chain.markov_chain(markov_chain.open_file('WarAndPeace.txt'))
-    return markov_chain.generate_sentence(10, longer_model)
-    # return "Hellooo"
+    return markov_chain.generate_sentence(10, app.longer_model)

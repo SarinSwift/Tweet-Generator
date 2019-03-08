@@ -63,13 +63,13 @@ class HashTable(object):
         Run time: O(n) because we loop through every bucket in the hash table
         """
         # using length method in the linkedlist class
-        length_hash = 0
-        for bucket in self.buckets:
-            length_hash += bucket.length()
-        return length_hash
+        # length_hash = 0
+        # for bucket in self.buckets:           # O(b) where b is the length of the buckets
+        #     length_hash += bucket.length()    #   O(l)
+        # return length_hash        # this would be O(bl) --> O(b*(n/b)) --> O(n)
 
         # incrementing the count when we append and decrementing the count when we delete
-        # return self.length_of_hashtable
+        return self.length_of_hashtable
 
     def contains(self, key):
         """Return True if this hash table contains the given key, or False.
@@ -83,12 +83,13 @@ class HashTable(object):
     def get(self, key):
         """Return the value associated with the given key, or raise KeyError.
         Run time: O(n) because we call the find method on the specified index
+            where n is the number of key-value entries
         """
-        ind = self._bucket_index(key)
-        specific_bucket = self.buckets[ind]
-        found_item = specific_bucket.find(lambda entry: entry[0] == key)
-        if found_item is not None:
-            return found_item[1]
+        ind = self._bucket_index(key)           # constant time
+        specific_bucket = self.buckets[ind]     # constant time
+        found_item = specific_bucket.find(lambda entry: entry[0] == key)    # O(l) where l is the bucket's length
+        if found_item is not None: # found
+            return found_item[1] # found_item = (key, value)
         else:
             raise KeyError('Key not found: {}'.format(key))
 
@@ -96,14 +97,16 @@ class HashTable(object):
 
     def set(self, key, value):
         """Insert or update the given key with its associated value.
+        Best case O(1) if item is located near the head of list
         Run time: O(n) because we call the find method on the specified index
+        Actually O(2n) but is O(n) where n is the length of items in the bucket
         """
         ind = self._bucket_index(key)
         specific_bucket = self.buckets[ind]
         # checking in the linkedlist
         found_item = specific_bucket.find(lambda entry: entry[0] == key)
         if found_item is not None:
-            specific_bucket.replace(found_item, (key, value))
+            specific_bucket.replace(found_item, (key, value))       # O(n) time
         else:
             specific_bucket.append((key, value))
             self.length_of_hashtable += 1
@@ -116,14 +119,13 @@ class HashTable(object):
         Worst case run time: O(n) if the items are near the end of the ll
         """
         ind = self._bucket_index(key)
-        specific_bucket = self.buckets[ind]
-        found_item = specific_bucket.find(lambda item: item[0] == key)
-        if found_item is not None:
-            specific_bucket.delete(found_item)
+        specific_bucket = self.buckets[ind]         # O(1) Constant time
+        found_item = specific_bucket.find(lambda item: item[0] == key)  # O(l) average length of that ll # returns a key-value pair if found
+        if found_item is not None:                  # O(1) Constant time
+            specific_bucket.delete(found_item)      # O(l) lenght of that ll
             self.length_of_hashtable -= 1
         else:
             raise KeyError('Key not found: {}'.format(key))
-
 
 def test_hash_table():
     ht = HashTable()

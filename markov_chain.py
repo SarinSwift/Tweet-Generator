@@ -4,6 +4,7 @@ import string
 import random
 from dictogram import Dictogram
 
+
 def open_file(file):
     '''
     Returns a list of words in the whole textfile
@@ -73,12 +74,12 @@ def generate_sentence(chain):
 
 def pick_rand_word(dict):
     '''
-    Picks a random word from the nested dict that contains the following words
+    Picks a random word from the nested dict that contains the next follow up words
     (code from sample.py)
     '''
     total_count = len(dict)
-    print(total_count)
     cumulative_probability = 0
+    print(total_count)
     randomized = random.random()
 
     for key in dict:
@@ -89,29 +90,89 @@ def pick_rand_word(dict):
 
 
 
-# def markov_chain_second(sentence):
-#     histogram = {}
-#     sentence_array = sentence.split()
-#     double_words_arr = []
-#
-#     # create this >>> {'one fish': {}, 'fish two': {}, 'two fish': {}, 'fish red': {}, 'red fish': {}, 'fish blue': {}}
-#     for i in range(len(sentence_array)-2):
-#         empt_string = ""
-#         empt_string += sentence_array[i]
-#         empt_string += " "
-#         empt_string += sentence_array[i+1]
-#         double_words_arr.append(empt_string)
-#         if empt_string not in histogram:
-#             histogram[empt_string] = {}
-#
-#     # need to also loop through the sentence_array to get the words in the text
-#     print(histogram)
-#     print(double_words_arr)
+
+
+
+
+def markov_chain_second(file):
+    '''
+    Creates the markov model as such: {('One', 'fish'): {'two': 1}, ('fish', 'two'): {'fish': 1}, ('two', 'fish'):
+                                            {'red': 1}, ('fish', 'red'): {'fish': 1}, ('red', 'fish'): {'blue': 1},
+                                            ('fish', 'blue'): {'fish': 1}}
+    '''
+    histogram = Dictogram()
+    sentence_array = file
+    second_histogram = Dictogram()
+
+    # creates this >>> {('One', 'fish'): {}, ('fish', 'two'): {}, ('two', 'fish'): {}, ('fish', 'red'): {},
+    #                  ('red', 'fish'): {}, ('fish', 'blue'): {}}
+    for i in range(len(sentence_array)-2):
+        curr_word = sentence_array[i]
+        curr_word_next = sentence_array[i+1]
+        histogram[(curr_word, curr_word_next)] = {}
+
+    # creates this >>> {('One', 'fish'): {'two': 1}, ('fish', 'two'): {'fish': 1}, ('two', 'fish'): {'red': 1},
+    #                  ('fish', 'red'): {'fish': 1}, ('red', 'fish'): {'blue': 1}, ('fish', 'blue'): {'fish': 1}}
+    for i in range(len(sentence_array)-2):
+        curr_word = sentence_array[i]
+        curr_word_next = sentence_array[i+1]
+        next_word = sentence_array[i+2]
+
+        val = histogram[(curr_word, curr_word_next)]
+        if next_word in val:
+            val[next_word] += 1
+        else:
+            val[next_word] = 1
+
+    return histogram
+
+
+def generate_start_word_second(chain):
+    '''
+    Returns a random tuple pair
+    TODO: Make more accurate by selecting words from a text file that is the *start* words in different sentences
+    '''
+    tuple_words = random.choice(list(chain.keys()))      # python3: need to change this to a list to use indexing on it
+
+    return tuple_words
+
+def generate_sentence_second(chain):
+    '''
+    Generates a random sentence from the main markov chain model
+    Generates a sentence with the input length of words
+    '''
+    length = 10
+    starting_word = generate_start_word_second(chain)       # tuple
+    sentence = [starting_word[0], starting_word[1]]         # [str, str]
+
+    for i in range(length-1):
+        dict_of_following = chain[(sentence[i], sentence[i+1])]
+        # sentence.append(list(dict_of_following.keys())[0])
+        sentence.append(pick_rand_word(dict_of_following))
+
+    my_string = " ".join(sentence)
+    return my_string + '.'
 
 
 if __name__ == '__main__':
+    ''' testing fist order markov chain'''
     # model = markov_chain(open_file('/Users/sarinswift/Desktop/Designs/words_sample.txt'))
-    longer_model = markov_chain(open_file('WarAndPeace.txt'))
-
+    # longer_model = markov_chain(open_file('WarAndPeace.txt'))
     # print(generate_sentence(10, longer_model))
-    print(generate_sentence(longer_model))
+    # print(generate_sentence(longer_model))
+
+    ''' testing second order markov chain '''
+    # longer_model_more = markov_chain_second(open_file('/Users/sarinswift/Desktop/Designs/pg1250.txt'))
+    # print(generate_sentence_second(longer_model_more))
+
+    # longer_model_more2 = markov_chain_second(open_file('corpus.txt'))
+    # print(generate_sentence_second(longer_model_more2))
+
+    longer_model_more3 = markov_chain_second(open_file('/Users/sarinswift/Desktop/Designs/pg1250.txt'))
+    print(generate_sentence_second(longer_model_more3))
+
+    # longer_model_more4 = markov_chain_second(open_file('corpus.txt'))
+    # print(generate_sentence_second(longer_model_more4))
+
+    # print(markov_chain_second("One fish two fish red fish blue One fish three move"))
+    # print(markov_chain_second("One fish two fish red fish blue fish"))

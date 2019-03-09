@@ -19,6 +19,7 @@ def open_file(file):
 
 def markov_chain(file):
     '''
+    Takes in an array of words from the text file
     Creates the markov model as such: {'one': {'fish': 1}, 'fish': {'two': 1, 'red': 1, 'blue': 1},
                                        'two': {'fish': 1}, 'red': {'fish': 1}, 'blue': {'fish': 1}}
     '''
@@ -62,10 +63,13 @@ def generate_sentence(chain):
     length = 10
     starting_word = generate_start_word(chain)
     sentence = [starting_word]
+    last_word = sentence[-1]
 
     for i in range(length-1):
-        dict_of_following = chain[starting_word]
-        sentence.append(generate_start_word(chain[sentence[i]]))
+        dict_of_following = chain[last_word]
+        word_from_freq = pick_rand_word(dict_of_following)
+        sentence.append(word_from_freq)
+        last_word = sentence[-1]
 
 
     my_string = " ".join(sentence)
@@ -129,11 +133,10 @@ def markov_chain_second(file):
 
 def generate_start_word_second(chain):
     '''
-    Returns a random tuple pair
+    Returns a random tuple pair     ex. ('only', 'thing')
     TODO: Make more accurate by selecting words from a text file that is the *start* words in different sentences
     '''
     tuple_words = random.choice(list(chain.keys()))      # python3: need to change this to a list to use indexing on it
-
     return tuple_words
 
 def generate_sentence_second(chain):
@@ -157,9 +160,9 @@ def generate_sentence_second(chain):
 if __name__ == '__main__':
     ''' testing fist order markov chain'''
     # model = markov_chain(open_file('/Users/sarinswift/Desktop/Designs/words_sample.txt'))
-    # longer_model = markov_chain(open_file('WarAndPeace.txt'))
-    # print(generate_sentence(10, longer_model))
-    # print(generate_sentence(longer_model))
+    longer_model = markov_chain(open_file('WarAndPeace.txt'))
+    # print(generate_sentence(model))
+    print(generate_sentence(longer_model))
 
     ''' testing second order markov chain '''
     # longer_model_more = markov_chain_second(open_file('/Users/sarinswift/Desktop/Designs/pg1250.txt'))
@@ -168,8 +171,12 @@ if __name__ == '__main__':
     # longer_model_more2 = markov_chain_second(open_file('corpus.txt'))
     # print(generate_sentence_second(longer_model_more2))
 
-    longer_model_more3 = markov_chain_second(open_file('/Users/sarinswift/Desktop/Designs/pg1250.txt'))
-    print(generate_sentence_second(longer_model_more3))
+    # model3 = markov_chain_second(open_file('/Users/sarinswift/Desktop/Designs/words_sample.txt'))
+    # print(generate_sentence_second(model3))
+
+
+    # longer_model_more3 = markov_chain_second(open_file('/Users/sarinswift/Desktop/Designs/pg1250.txt'))
+    # print(generate_sentence_second(longer_model_more3))
 
     # longer_model_more4 = markov_chain_second(open_file('corpus.txt'))
     # print(generate_sentence_second(longer_model_more4))
